@@ -1,12 +1,12 @@
 const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
-const {
-    AsyncNedb
-} = require('nedb-async');
-// const Datastore = require("nedb");
+// const {
+//     AsyncNedb
+// } = require('nedb-async');
+// // const Datastore = require("nedb");
 
-const db = new AsyncNedb('database.db');
-db.asyncLoadDatabase();
+// const db = new AsyncNedb('database.db');
+// db.asyncLoadDatabase();
 
 
 //Socket port
@@ -67,7 +67,7 @@ setInterval(() => {
                     console.log(err.stack);
                 }
             });
-        })
+        });
     }
 }, 1000);
 
