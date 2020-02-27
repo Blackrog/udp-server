@@ -36,12 +36,11 @@ server.on('error', (err) => {
 });
 
 server.on('message', (msg, rinfo) => {
-    if (msg == "What ever") {
         console.log(`Connected client at ${rinfo.address}:${rinfo.port}, ${msg}`);
         clients.push(rinfo);
         clients_ports.push(rinfo.port);
         // db.insert(rinfo, (err, newDoc) => {});
-    } else if (msg == "5000") {
+    if (msg == "5000") {
         portCheck = rinfo.port;
         removePort(portCheck);
     }

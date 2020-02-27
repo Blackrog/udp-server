@@ -1,10 +1,12 @@
 const dgram = require('dgram');
 const client = dgram.createSocket('udp4');
 
-const host = '127.0.0.1';
+const address = "ec2-13-48-131-116.eu-north-1.compute.amazonaws.com";
+
+const host = address;
 const port = 41100;
-const randomNumber = Math.floor(Math.random() * 1000);
-console.log("Looking for " + randomNumber)
+const randomNumber = Math.floor(Math.random() * 50);
+console.log("Looking for " + randomNumber);
 let message = new Buffer.from('What ever');
 
 
@@ -16,7 +18,7 @@ const parseTick = (message) => {
     return {
         price: parts[0],
         time: parts[1]
-    }
+    };
 };
 
 let latestTickTime = -1;
@@ -36,7 +38,7 @@ client.on('message', (message) => {
         });
     } else {
         if (tick.time > latestTickTime) {
-            latestTickTime = tick.time
+            latestTickTime = tick.time;
         } else {
             console.log('Price is outdated, discard');
         }
